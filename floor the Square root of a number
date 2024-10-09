@@ -1,0 +1,4 @@
+import math
+n = int(input())
+m = math.floor(math.pow(n, 1/2))
+print(m)
