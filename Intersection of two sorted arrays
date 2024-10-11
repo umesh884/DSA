@@ -1,0 +1,38 @@
+from os import *
+from sys import *
+from collections import *
+from math import *
+
+def findArrayIntersection(arr: list, n: int, brr: list, m: int):
+    
+    ans = []
+    for n in range(len(arr)-1):
+        if(arr[n] > arr[n+1]):
+            arr[n],arr[n+1] = arr[n+1],arr[n]
+            #sorted for arr
+    for m in range(len(brr)-1):
+        if(brr[m] > brr[m+1]):
+            brr[m],brr[m+1] = brr[m+1],brr[m]
+        #sorted for brr
+    i = 0
+    j = 0
+    while i < len(arr) and j < len(brr):
+        if arr[i] == brr[j]:
+            ans.append(arr[i])
+            i += 1
+            j += 1
+        elif arr[i] > brr[j]:
+            j += 1
+        else:
+            i += 1
+    #ans = set(arr).intersection(brr)
+    if len(ans)== 0:
+        return 0
+    else:
+        return ans
+
+#   Example
+    # Return a list containing all the common elements in arr and brr.
+    # arr = {1,6,4,2,4} sort = {1,2,4,4,6}
+    #brr = {3,6,4,5,4} sort = {3,4,4,5,6}
+    # intersection = {4,4,6}
